@@ -2,18 +2,21 @@
 
 {% block content %}
 <div class='container'>
+    <a class='btn btn-primary' href="{% url 'create' %}">Create</a>
     <div class='row'>
         {% for object in object_list %}
         <div class='col-4'>
-            <a href='{{ object.get_absolute_url }}'>
-                <div class="card" style="width: 18rem;">
+            <div class="card" style="width: 18rem;">
+                <a href='{{ object.get_absolute_url }}'>
                     <img src=" {{ object.thumbnail.url }} " class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">{{object.title}}</h5>
-                        <p class="card-text">{{ object.content|truncatechars:20 }}</p>
-                    </div>
-                </div>
-            </a>
+                </a></hr>
+                <h5 class="card-title">{{ object.title }}</h5>
+                <p class="card-text">
+                    Posted {{ object.publish_date|timesince }} ago
+                </p>
+                <p class="card-text">{{ object.content|truncatechars:100 }}</p>
+            </hr>
+            </div>
         </div>
         {% endfor %}
     </div>

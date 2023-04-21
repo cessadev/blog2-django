@@ -3,6 +3,12 @@
 {% block content %}
     <div class='container'>
         <h1>Detail View</h1>
-        {{object.title}}
+        <img src=" {{ object.thumbnail.url }} " class="card-img-top" height="500">
+        <p class="card-text">
+            Posted {{ object.publish_date|timesince }} ago
+        </p>
+        <h5>{{object.title}}</h5>
+        <p>{{object.content}}</p>
+        <a class='btn btn-primary' href="{% url 'list' %}">Back</a>
     </div>
 {% endblock content %}
